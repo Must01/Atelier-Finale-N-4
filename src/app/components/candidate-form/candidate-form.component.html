@@ -20,7 +20,9 @@
         minlength="5"
         [ngClass]="{
           valid: name.valid && name.dirty,
-          invalid: name.invalid && name.dirty
+          invalid: name.invalid && name.dirty,
+          'input-valid-bg': name.valid && name.dirty,
+          'input-invalid-bg': name.invalid && name.dirty
         }"
       />
       <div class="errors" *ngIf="name.dirty && name.invalid">
@@ -41,7 +43,9 @@
         email
         [ngClass]="{
           valid: email.valid && email.dirty,
-          invalid: email.invalid && email.dirty
+          invalid: email.invalid && email.dirty,
+          'input-valid-bg': email.valid && email.dirty,
+          'input-invalid-bg': email.invalid && email.dirty
         }"
       />
       <div class="errors" *ngIf="email.dirty && email.invalid">
@@ -60,7 +64,9 @@
         required
         [ngClass]="{
           valid: level.valid && level.dirty,
-          invalid: level.invalid && level.dirty
+          invalid: level.invalid && level.dirty,
+          'input-valid-bg': level.valid && level.dirty,
+          'input-invalid-bg': level.invalid && level.dirty
         }"
       >
         <option value="Junior">Junior</option>
@@ -71,41 +77,41 @@
         <div *ngIf="level.errors?.['required']">Niveau requis</div>
       </div>
     </div>
-  <fieldset ngModelGroup="preferences">
-  <legend>Préférences de mission</legend>
 
-  <label>
-    <input
-      type="radio"
-      name="contractType"
-      value="CDI"
-      [(ngModel)]="candidate.preferences.contractType"
-    />
-    CDI
-  </label>
-<br>
-  <label>
-    <input
-      type="radio"
-      name="contractType"
-      value="Freelance"
-      [(ngModel)]="candidate.preferences.contractType"
-    />
-    Freelance
-  </label>
+    <fieldset ngModelGroup="preferences">
+      <legend>Préférences de mission</legend>
 
-  <br />
+      <label>
+        <input
+          type="radio"
+          name="contractType"
+          value="CDI"
+          [(ngModel)]="candidate.preferences.contractType"
+        />
+        CDI
+      </label>
+      <br>
+      <label>
+        <input
+          type="radio"
+          name="contractType"
+          value="Freelance"
+          [(ngModel)]="candidate.preferences.contractType"
+        />
+        Freelance
+      </label>
 
-  <label>
-    <input
-      type="checkbox"
-      name="available"
-      [(ngModel)]="candidate.preferences.available"
-    />
-    Disponible immédiatement
-  </label>
-</fieldset>
+      <br />
 
+      <label>
+        <input
+          type="checkbox"
+          name="available"
+          [(ngModel)]="candidate.preferences.available"
+        />
+        Disponible immédiatement
+      </label>
+    </fieldset>
 
     <div class="form-group">
       <label for="bio">Pitch Personnel</label>
@@ -118,6 +124,12 @@
         minlength="20"
         maxlength="200"
         placeholder="Parlez-nous de vous (20 à 200 caractères)..."
+        [ngClass]="{
+          valid: bio.valid && bio.dirty,
+          invalid: bio.invalid && bio.dirty,
+          'input-valid-bg': bio.valid && bio.dirty,
+          'input-invalid-bg': bio.invalid && bio.dirty
+        }"
       ></textarea>
 
       <div 

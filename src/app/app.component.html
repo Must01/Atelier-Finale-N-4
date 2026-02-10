@@ -1,2 +1,9 @@
 <p>Start from here Devs</p>
-<app-candidate-form></app-candidate-form>
+<app-candidate-form
+	(ngSubmitForm)="handleSubmit($event)"
+></app-candidate-form>
+<app-candidate-preview
+	*ngIf="showPreview"
+	[candidateData]="candidateData"
+	(newApplication)="handleNewApplication()"
+></app-candidate-preview>

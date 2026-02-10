@@ -1,1 +1,41 @@
-<p>candidate-preview works!</p>
+<div class="candidate-preview">
+  <h2> carte candidature</h2>
+  
+  <div class="preview-card">
+    <div class="preview-header">
+      <h3>Nom</h3>
+      <span class="preview-level">{{ candidateData.level }}</span>
+    </div>
+    
+    <div class="preview-content">
+      <div class="preview-item">
+        <strong>Email :</strong> 
+        <span>{{ candidateData.email }}</span>
+      </div>
+      
+      <div class="preview-item">
+        <strong>Contrat :</strong> 
+        <span>{{ candidateData.preferences.contractType }}</span>
+      </div>
+      
+      <div class="preview-item">
+        <strong>Disponibilité :</strong> 
+        <span>
+          <ng-container *ngIf="candidateData.preferences.available; else notAvailable">
+             Immédiate
+          </ng-container>
+          <ng-template #notAvailable>
+             À convenir
+          </ng-template>
+        </span>
+      </div>
+      
+      <div class="preview-bio" *ngIf="candidateData.bio">
+        <strong>BIO:</strong>
+        <p>{{ candidateData.bio }}</p>
+      </div>
+    </div>
+
+
+  </div>
+</div>

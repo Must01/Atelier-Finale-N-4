@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 
@@ -10,23 +10,22 @@ import { FormsModule, NgForm } from '@angular/forms';
   styleUrls: ['./candidate-form.component.css']
 })
 export class CandidateFormComponent {
-  // Initialisation complète pour éviter les erreurs "undefined"
   candidate = {
     name: '',
     email: '',
     level: 'Junior',
     preferences: {
-      contractType: 'CDI', 
+      contractType: 'CDI',
       available: false
     },
-    bio: '' // Initialisé à vide pour que .length fonctionne immédiatement
+    bio: ''
   };
+
+  @Output() ngSubmitForm = new EventEmitter<any>();
 
   onSubmit(form: NgForm) {
     if (form.valid) {
-      console.log('Données envoyées :', this.candidate);
-      
-      // Reset complet du formulaire [FORM-01]
+      this.ngSubmitForm.emit({ ...this.candidate });
       form.resetForm({
         name: '',
         email: '',
@@ -34,8 +33,7 @@ export class CandidateFormComponent {
         preferences: {
           contractType: 'CDI',
           available: false
-        }
-        level: 'Junior',
+        },
         bio: ''
       });
     }
