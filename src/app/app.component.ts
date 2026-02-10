@@ -11,16 +11,44 @@ import { CandidatePreviewComponent } from './components/candidate-preview/candid
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  candidateData: any = null;
-  showPreview = false;
+  candidateData: any = {
+    name: '',
+    email: '',
+    level: 'Junior',
+    preferences: {
+      contractType: 'CDI',
+      available: false
+    },
+    bio: ''
+  };
+  showPreview = true;
+  isFirstSubmissionDone = false;
+
+  handleCandidateChange(candidate: any) {
+    // Show live preview only before first submission
+    if (!this.isFirstSubmissionDone) {
+      this.candidateData = { ...candidate };
+    }
+  }
 
   handleSubmit(candidate: any) {
     this.candidateData = { ...candidate };
     this.showPreview = true;
+    this.isFirstSubmissionDone = true;
   }
 
   handleNewApplication() {
-    this.candidateData = null;
+    this.candidateData = {
+      name: '',
+      email: '',
+      level: 'Junior',
+      preferences: {
+        contractType: 'CDI',
+        available: false
+      },
+      bio: ''
+    };
     this.showPreview = false;
+    this.isFirstSubmissionDone = false;
   }
 }
