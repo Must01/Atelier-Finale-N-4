@@ -10,18 +10,22 @@ import { FormsModule, NgForm } from '@angular/forms';
   styleUrls: ['./candidate-form.component.css']
 })
 export class CandidateFormComponent {
+  // Initialisation complète pour éviter les erreurs "undefined"
   candidate = {
     name: '',
     email: '',
-    level: 'Junior'
+    level: 'Junior',
+    bio: '' // Initialisé à vide pour que .length fonctionne immédiatement
   };
 
   onSubmit(form: NgForm) {
     if (form.valid) {
+      console.log('Données envoyées :', this.candidate);
+      
+      // Reset complet du formulaire [FORM-01]
       form.resetForm({
-        name: '',
-        email: '',
-        level: 'Junior'
+        level: 'Junior',
+        bio: ''
       });
     }
   }

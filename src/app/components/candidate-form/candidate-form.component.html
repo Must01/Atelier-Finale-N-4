@@ -3,9 +3,7 @@
   (ngSubmit)="onSubmit(candidateForm)"
   novalidate
   class="candidate-container"
-  [class.form-invalid]="
-    candidateForm.invalid && (candidateForm.touched || candidateForm.dirty)
-  "
+  [class.form-invalid]="candidateForm.invalid && (candidateForm.touched || candidateForm.dirty)"
 >
   <fieldset class="card">
     <legend>Identité du candidat</legend>
@@ -22,7 +20,7 @@
         minlength="5"
         [ngClass]="{
           valid: name.valid && name.dirty,
-          invalid: name.invalid && name.dirty,
+          invalid: name.invalid && name.dirty
         }"
       />
       <div class="errors" *ngIf="name.dirty && name.invalid">
@@ -43,7 +41,7 @@
         email
         [ngClass]="{
           valid: email.valid && email.dirty,
-          invalid: email.invalid && email.dirty,
+          invalid: email.invalid && email.dirty
         }"
       />
       <div class="errors" *ngIf="email.dirty && email.invalid">
@@ -62,7 +60,7 @@
         required
         [ngClass]="{
           valid: level.valid && level.dirty,
-          invalid: level.invalid && level.dirty,
+          invalid: level.invalid && level.dirty
         }"
       >
         <option value="Junior">Junior</option>
@@ -71,6 +69,32 @@
       </select>
       <div class="errors" *ngIf="level.dirty && level.invalid">
         <div *ngIf="level.errors?.['required']">Niveau requis</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="bio">Pitch Personnel</label>
+      <textarea
+        id="bio"
+        name="bio"
+        [(ngModel)]="candidate.bio"
+        #bio="ngModel"
+        required
+        minlength="20"
+        maxlength="200"
+        placeholder="Parlez-nous de vous (20 à 200 caractères)..."
+      ></textarea>
+
+      <div 
+        class="char-counter" 
+        [style.color]="candidate.bio.length > 180 ? 'red' : 'inherit'"
+        style="text-align: right; font-size: 0.8rem; margin-top: 5px;"
+      >
+        {{ candidate.bio.length }} / 200 caractères
+      </div>
+
+      <div class="errors" *ngIf="bio.dirty && bio.errors?.['minlength']">
+        <div>Le pitch doit faire au moins 20 caractères.</div>
       </div>
     </div>
 
