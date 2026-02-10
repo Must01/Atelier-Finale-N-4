@@ -73,6 +73,41 @@
         <div *ngIf="level.errors?.['required']">Niveau requis</div>
       </div>
     </div>
+  <fieldset ngModelGroup="preferences">
+  <legend>Préférences de mission</legend>
+
+  <label>
+    <input
+      type="radio"
+      name="contractType"
+      value="CDI"
+      [(ngModel)]="candidate.preferences.contractType"
+    />
+    CDI
+  </label>
+<br>
+  <label>
+    <input
+      type="radio"
+      name="contractType"
+      value="Freelance"
+      [(ngModel)]="candidate.preferences.contractType"
+    />
+    Freelance
+  </label>
+
+  <br />
+
+  <label>
+    <input
+      type="checkbox"
+      name="available"
+      [(ngModel)]="candidate.preferences.available"
+    />
+    Disponible immédiatement
+  </label>
+</fieldset>
+
 
     <button type="submit" [disabled]="candidateForm.invalid" class="btn-submit">
       Postuler

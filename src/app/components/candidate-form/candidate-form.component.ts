@@ -13,7 +13,11 @@ export class CandidateFormComponent {
   candidate = {
     name: '',
     email: '',
-    level: 'Junior'
+    level: 'Junior',
+    preferences: {
+      contractType: 'CDI', 
+      available: false
+    }
   };
 
   onSubmit(form: NgForm) {
@@ -21,7 +25,11 @@ export class CandidateFormComponent {
       form.resetForm({
         name: '',
         email: '',
-        level: 'Junior'
+        level: 'Junior',
+        preferences: {
+          contractType: 'CDI',
+          available: false
+        }
       });
     }
   }
