@@ -15,6 +15,10 @@ export class CandidateFormComponent {
     name: '',
     email: '',
     level: 'Junior',
+    preferences: {
+      contractType: 'CDI', 
+      available: false
+    },
     bio: '' // Initialisé à vide pour que .length fonctionne immédiatement
   };
 
@@ -24,6 +28,13 @@ export class CandidateFormComponent {
       
       // Reset complet du formulaire [FORM-01]
       form.resetForm({
+        name: '',
+        email: '',
+        level: 'Junior',
+        preferences: {
+          contractType: 'CDI',
+          available: false
+        }
         level: 'Junior',
         bio: ''
       });
