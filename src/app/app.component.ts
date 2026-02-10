@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { CandidateFormComponent } from './components/candidate-form/candidate-form.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, CandidateFormComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
