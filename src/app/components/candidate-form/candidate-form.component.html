@@ -1,1 +1,81 @@
-<p>candidate-form works!</p>
+<form
+  #candidateForm="ngForm"
+  (ngSubmit)="onSubmit(candidateForm)"
+  novalidate
+  class="candidate-container"
+  [class.form-invalid]="
+    candidateForm.invalid && (candidateForm.touched || candidateForm.dirty)
+  "
+>
+  <fieldset class="card">
+    <legend>Identité du candidat</legend>
+
+    <div class="form-group">
+      <label for="name">Nom complet</label>
+      <input
+        id="name"
+        name="name"
+        type="text"
+        [(ngModel)]="candidate.name"
+        #name="ngModel"
+        required
+        minlength="5"
+        [ngClass]="{
+          valid: name.valid && name.dirty,
+          invalid: name.invalid && name.dirty,
+        }"
+      />
+      <div class="errors" *ngIf="name.dirty && name.invalid">
+        <div *ngIf="name.errors?.['required']">Nom requis</div>
+        <div *ngIf="name.errors?.['minlength']">Minimum 5 caractères</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email professionnel</label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        [(ngModel)]="candidate.email"
+        #email="ngModel"
+        required
+        email
+        [ngClass]="{
+          valid: email.valid && email.dirty,
+          invalid: email.invalid && email.dirty,
+        }"
+      />
+      <div class="errors" *ngIf="email.dirty && email.invalid">
+        <div *ngIf="email.errors?.['required']">Email requis</div>
+        <div *ngIf="email.errors?.['email']">Format invalide</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="level">Niveau</label>
+      <select
+        id="level"
+        name="level"
+        [(ngModel)]="candidate.level"
+        #level="ngModel"
+        required
+        [ngClass]="{
+          valid: level.valid && level.dirty,
+          invalid: level.invalid && level.dirty,
+        }"
+      >
+        <option value="Junior">Junior</option>
+        <option value="Intermédiaire">Intermédiaire</option>
+        <option value="Senior">Senior</option>
+      </select>
+      <div class="errors" *ngIf="level.dirty && level.invalid">
+        <div *ngIf="level.errors?.['required']">Niveau requis</div>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="candidateForm.invalid" class="btn-submit">
+      Postuler
+    </button>
+  </fieldset>
+</form>

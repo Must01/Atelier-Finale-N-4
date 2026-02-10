@@ -1,0 +1,71 @@
+/* Container */
+.candidate-container {
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+.card {
+  border: 1px solid #eee;
+  padding: 16px;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.form-group {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+input[type="text"],
+input[type="email"],
+select {
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline: none;
+  transition:
+    box-shadow 0.12s ease,
+    border-color 0.12s ease;
+}
+
+/* Valid / invalid visual feedback (make whole input red/green) */
+.valid {
+  border-left-color: #2ecc71; /* green */
+  border-color: #2ecc71;
+  box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.06);
+}
+
+.invalid {
+  border-left-color: #e74c3c; /* red */
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.06);
+}
+
+.errors {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+.btn-submit {
+  margin-top: 8px;
+  padding: 10px 14px;
+  background: #337ab7;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(51, 122, 183, 0.2);
+}
+
+.btn-submit[disabled] {
+  background: #ccc;
+  box-shadow: none;
+  cursor: not-allowed;
+}

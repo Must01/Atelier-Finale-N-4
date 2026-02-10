@@ -1,12 +1,28 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-candidate-form',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, FormsModule],
   templateUrl: './candidate-form.component.html',
-  styleUrl: './candidate-form.component.css'
+  styleUrls: ['./candidate-form.component.css']
 })
 export class CandidateFormComponent {
+  candidate = {
+    name: '',
+    email: '',
+    level: 'Junior'
+  };
 
+  onSubmit(form: NgForm) {
+    if (form.valid) {
+      form.resetForm({
+        name: '',
+        email: '',
+        level: 'Junior'
+      });
+    }
+  }
 }
