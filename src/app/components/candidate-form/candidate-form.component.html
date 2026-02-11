@@ -17,6 +17,7 @@
         name="name"
         type="text"
         [(ngModel)]="candidate.name"
+        (ngModelChange)="onCandidateChange()"
         #name="ngModel"
         required
         minlength="5"
@@ -40,6 +41,7 @@
         name="email"
         type="email"
         [(ngModel)]="candidate.email"
+        (ngModelChange)="onCandidateChange()"
         #email="ngModel"
         required
         email
@@ -62,6 +64,7 @@
         id="level"
         name="level"
         [(ngModel)]="candidate.level"
+        (ngModelChange)="onCandidateChange()"
         #level="ngModel"
         required
         [ngClass]="{
@@ -89,6 +92,7 @@
           name="contractType"
           value="CDI"
           [(ngModel)]="candidate.preferences.contractType"
+          (ngModelChange)="onCandidateChange()"
         />
         CDI
       </label>
@@ -99,6 +103,7 @@
           name="contractType"
           value="Freelance"
           [(ngModel)]="candidate.preferences.contractType"
+          (ngModelChange)="onCandidateChange()"
         />
         Freelance
       </label>
@@ -110,6 +115,7 @@
           type="checkbox"
           name="available"
           [(ngModel)]="candidate.preferences.available"
+          (ngModelChange)="onCandidateChange()"
         />
         Disponible immédiatement
       </label>
@@ -121,6 +127,7 @@
         id="bio"
         name="bio"
         [(ngModel)]="candidate.bio"
+        (ngModelChange)="onCandidateChange()"
         #bio="ngModel"
         required
         minlength="20"

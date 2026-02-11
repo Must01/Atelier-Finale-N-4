@@ -22,6 +22,11 @@ export class CandidateFormComponent {
   };
 
   @Output() ngSubmitForm = new EventEmitter<any>();
+  @Output() candidateChange = new EventEmitter<any>();
+
+  onCandidateChange() {
+    this.candidateChange.emit({ ...this.candidate });
+  }
 
   onSubmit(form: NgForm) {
     if (form.valid) {

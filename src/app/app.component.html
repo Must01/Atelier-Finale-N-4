@@ -1,9 +1,10 @@
 <p>Start from here Devs</p>
 <app-candidate-form
-	(ngSubmitForm)="handleSubmit($event)"
+  (ngSubmitForm)="handleSubmit($event)"
+  (candidateChange)="handleCandidateChange($event)"
 ></app-candidate-form>
 <app-candidate-preview
-	*ngIf="showPreview"
-	[candidateData]="candidateData"
-	(newApplication)="handleNewApplication()"
+  *ngIf="showPreview"
+  [candidateData]="candidateData"
+  (newApplication)="handleNewApplication()"
 ></app-candidate-preview>
