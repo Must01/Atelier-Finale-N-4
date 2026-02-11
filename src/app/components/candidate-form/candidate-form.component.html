@@ -3,7 +3,9 @@
   (ngSubmit)="onSubmit(candidateForm)"
   novalidate
   class="candidate-container"
-  [class.form-invalid]="candidateForm.invalid && (candidateForm.touched || candidateForm.dirty)"
+  [class.form-invalid]="
+    candidateForm.invalid && (candidateForm.touched || candidateForm.dirty)
+  "
 >
   <fieldset class="card">
     <legend>Identité du candidat</legend>
@@ -22,7 +24,7 @@
           valid: name.valid && name.dirty,
           invalid: name.invalid && name.dirty,
           'input-valid-bg': name.valid && name.dirty,
-          'input-invalid-bg': name.invalid && name.dirty
+          'input-invalid-bg': name.invalid && name.dirty,
         }"
       />
       <div class="errors" *ngIf="name.dirty && name.invalid">
@@ -45,7 +47,7 @@
           valid: email.valid && email.dirty,
           invalid: email.invalid && email.dirty,
           'input-valid-bg': email.valid && email.dirty,
-          'input-invalid-bg': email.invalid && email.dirty
+          'input-invalid-bg': email.invalid && email.dirty,
         }"
       />
       <div class="errors" *ngIf="email.dirty && email.invalid">
@@ -66,7 +68,7 @@
           valid: level.valid && level.dirty,
           invalid: level.invalid && level.dirty,
           'input-valid-bg': level.valid && level.dirty,
-          'input-invalid-bg': level.invalid && level.dirty
+          'input-invalid-bg': level.invalid && level.dirty,
         }"
       >
         <option value="Junior">Junior</option>
@@ -90,7 +92,7 @@
         />
         CDI
       </label>
-      <br>
+      <br />
       <label>
         <input
           type="radio"
@@ -114,7 +116,7 @@
     </fieldset>
 
     <div class="form-group">
-      <label for="bio">Pitch Personnel</label>
+      <label for="bio">Bio Personnel</label>
       <textarea
         id="bio"
         name="bio"
@@ -128,14 +130,14 @@
           valid: bio.valid && bio.dirty,
           invalid: bio.invalid && bio.dirty,
           'input-valid-bg': bio.valid && bio.dirty,
-          'input-invalid-bg': bio.invalid && bio.dirty
+          'input-invalid-bg': bio.invalid && bio.dirty,
         }"
       ></textarea>
 
-      <div 
-        class="char-counter" 
+      <div
+        class="char-counter"
         [style.color]="candidate.bio.length > 180 ? 'red' : 'inherit'"
-        style="text-align: right; font-size: 0.8rem; margin-top: 5px;"
+        style="text-align: right; font-size: 0.8rem; margin-top: 5px"
       >
         {{ candidate.bio.length }} / 200 caractères
       </div>
